@@ -1,0 +1,6 @@
+{
+  "artifactId": "audit-log-service",
+  "status": "TEST_API_UNAVAILABLE",
+  "message": "Request failed with status code 401",
+  "generatedAt": "2026-11-02T10:58:09.980Z"
+}

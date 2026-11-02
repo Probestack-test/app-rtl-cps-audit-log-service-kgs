@@ -1,0 +1,102 @@
+_format_version: "3.0"
+_transform: true
+
+########################################################
+# SERVICES
+########################################################
+
+services:
+  - name: audit-log-service
+    host: audit-log-service
+    port: 443
+    protocol: https
+    path: /api
+    retries: 5
+    connect_timeout: 60000
+    write_timeout: 60000
+    read_timeout: 60000
+    routes:
+      - name: audit-log-service-get-api-v1-payments-events
+        protocols:
+          - https
+          - http
+        methods:
+          - GET
+        hosts:
+          - api.example.com
+        paths:
+          - /api/v1/payments/events
+        strip_path: true
+        preserve_host: false
+        https_redirect_status_code: 426
+      - name: audit-log-service-post-api-v1-payments-events
+        protocols:
+          - https
+          - http
+        methods:
+          - POST
+        hosts:
+          - api.example.com
+        paths:
+          - /api/v1/payments/events
+        strip_path: true
+        preserve_host: false
+        https_redirect_status_code: 426
+      - name: audit-log-service-get-api-v1-payments-events-eventid
+        protocols:
+          - https
+          - http
+        methods:
+          - GET
+        hosts:
+          - api.example.com
+        paths:
+          - /api/v1/payments/events/{eventId}
+        strip_path: true
+        preserve_host: false
+        https_redirect_status_code: 426
+      - name: audit-log-service-put-api-v1-payments-events-eventid
+        protocols:
+          - https
+          - http
+        methods:
+          - PUT
+        hosts:
+          - api.example.com
+        paths:
+          - /api/v1/payments/events/{eventId}
+        strip_path: true
+        preserve_host: false
+        https_redirect_status_code: 426
+      - name: audit-log-service-delete-api-v1-payments-events-eventid
+        protocols:
+          - https
+          - http
+        methods:
+          - DELETE
+        hosts:
+          - api.example.com
+        paths:
+          - /api/v1/payments/events/{eventId}
+        strip_path: true
+        preserve_host: false
+        https_redirect_status_code: 426
+
+########################################################
+# PLUGINS
+########################################################
+
+plugins:
+  []
+
+########################################################
+# UPSTREAMS + TARGETS
+########################################################
+
+upstreams:
+  - name: audit-log-service
+    algorithm: round-robin
+    slots: 10000
+    targets:
+      - target: api.example.com:443
+        weight: 100
