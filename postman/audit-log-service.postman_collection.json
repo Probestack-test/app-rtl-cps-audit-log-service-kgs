@@ -1,0 +1,930 @@
+{
+  "info": {
+    "name": "Audit Log Service Postman Collection",
+    "description": "Microservice for recording immutable audit events across the platform.\nSupports append-only writes, actor and resource filtering, and export for compliance.\n\nOpenAPI version: 3.0.3",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.example.com/v1",
+      "type": "string",
+      "description": "Override with the base URL of the deployed Kong gateway."
+    },
+    {
+      "key": "actorEmail",
+      "value": "",
+      "type": "string",
+      "description": "Filter by the user who performed the action"
+    },
+    {
+      "key": "action",
+      "value": "",
+      "type": "string",
+      "description": "Filter by action type"
+    },
+    {
+      "key": "resourceType",
+      "value": "",
+      "type": "string",
+      "description": "Filter by the type of resource acted upon (e.g., \"Invoice\")"
+    },
+    {
+      "key": "fromDate",
+      "value": "",
+      "type": "string",
+      "description": "Return events at or after this timestamp"
+    },
+    {
+      "key": "toDate",
+      "value": "",
+      "type": "string",
+      "description": "Return events at or before this timestamp"
+    },
+    {
+      "key": "page",
+      "value": "",
+      "type": "string",
+      "description": "Page number (starts at 1)"
+    },
+    {
+      "key": "size",
+      "value": "",
+      "type": "string",
+      "description": "Number of items per page"
+    },
+    {
+      "key": "eventId",
+      "value": "",
+      "type": "string",
+      "description": "Unique audit event identifier (UUID)"
+    }
+  ],
+  "item": [
+    {
+      "name": "List audit events",
+      "request": {
+        "method": "GET",
+        "description": "List audit events\n\nResponses:\n- 200: Successful response\n- 400: Response\n- 500: Response",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?actorEmail={{actorEmail}}&action={{action}}&resourceType={{resourceType}}&fromDate={{fromDate}}&toDate={{toDate}}&page={{page}}&size={{size}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "actorEmail",
+              "value": "{{actorEmail}}",
+              "disabled": true,
+              "description": "Filter by the user who performed the action"
+            },
+            {
+              "key": "action",
+              "value": "{{action}}",
+              "disabled": true,
+              "description": "Filter by action type"
+            },
+            {
+              "key": "resourceType",
+              "value": "{{resourceType}}",
+              "disabled": true,
+              "description": "Filter by the type of resource acted upon (e.g., \"Invoice\")"
+            },
+            {
+              "key": "fromDate",
+              "value": "{{fromDate}}",
+              "disabled": true,
+              "description": "Return events at or after this timestamp"
+            },
+            {
+              "key": "toDate",
+              "value": "{{toDate}}",
+              "disabled": true,
+              "description": "Return events at or before this timestamp"
+            },
+            {
+              "key": "page",
+              "value": "{{page}}",
+              "disabled": true,
+              "description": "Page number (starts at 1)"
+            },
+            {
+              "key": "size",
+              "value": "{{size}}",
+              "disabled": true,
+              "description": "Number of items per page"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Successful response",
+          "originalRequest": {
+            "method": "GET",
+            "description": "List audit events\n\nResponses:\n- 200: Successful response\n- 400: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events?actorEmail={{actorEmail}}&action={{action}}&resourceType={{resourceType}}&fromDate={{fromDate}}&toDate={{toDate}}&page={{page}}&size={{size}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "actorEmail",
+                  "value": "{{actorEmail}}",
+                  "disabled": true,
+                  "description": "Filter by the user who performed the action"
+                },
+                {
+                  "key": "action",
+                  "value": "{{action}}",
+                  "disabled": true,
+                  "description": "Filter by action type"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "{{resourceType}}",
+                  "disabled": true,
+                  "description": "Filter by the type of resource acted upon (e.g., \"Invoice\")"
+                },
+                {
+                  "key": "fromDate",
+                  "value": "{{fromDate}}",
+                  "disabled": true,
+                  "description": "Return events at or after this timestamp"
+                },
+                {
+                  "key": "toDate",
+                  "value": "{{toDate}}",
+                  "disabled": true,
+                  "description": "Return events at or before this timestamp"
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "disabled": true,
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "key": "size",
+                  "value": "{{size}}",
+                  "disabled": true,
+                  "description": "Number of items per page"
+                }
+              ]
+            }
+          },
+          "status": "Successful response",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "400",
+          "originalRequest": {
+            "method": "GET",
+            "description": "List audit events\n\nResponses:\n- 200: Successful response\n- 400: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events?actorEmail={{actorEmail}}&action={{action}}&resourceType={{resourceType}}&fromDate={{fromDate}}&toDate={{toDate}}&page={{page}}&size={{size}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "actorEmail",
+                  "value": "{{actorEmail}}",
+                  "disabled": true,
+                  "description": "Filter by the user who performed the action"
+                },
+                {
+                  "key": "action",
+                  "value": "{{action}}",
+                  "disabled": true,
+                  "description": "Filter by action type"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "{{resourceType}}",
+                  "disabled": true,
+                  "description": "Filter by the type of resource acted upon (e.g., \"Invoice\")"
+                },
+                {
+                  "key": "fromDate",
+                  "value": "{{fromDate}}",
+                  "disabled": true,
+                  "description": "Return events at or after this timestamp"
+                },
+                {
+                  "key": "toDate",
+                  "value": "{{toDate}}",
+                  "disabled": true,
+                  "description": "Return events at or before this timestamp"
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "disabled": true,
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "key": "size",
+                  "value": "{{size}}",
+                  "disabled": true,
+                  "description": "Number of items per page"
+                }
+              ]
+            }
+          },
+          "status": "400",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "500",
+          "originalRequest": {
+            "method": "GET",
+            "description": "List audit events\n\nResponses:\n- 200: Successful response\n- 400: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events?actorEmail={{actorEmail}}&action={{action}}&resourceType={{resourceType}}&fromDate={{fromDate}}&toDate={{toDate}}&page={{page}}&size={{size}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "key": "actorEmail",
+                  "value": "{{actorEmail}}",
+                  "disabled": true,
+                  "description": "Filter by the user who performed the action"
+                },
+                {
+                  "key": "action",
+                  "value": "{{action}}",
+                  "disabled": true,
+                  "description": "Filter by action type"
+                },
+                {
+                  "key": "resourceType",
+                  "value": "{{resourceType}}",
+                  "disabled": true,
+                  "description": "Filter by the type of resource acted upon (e.g., \"Invoice\")"
+                },
+                {
+                  "key": "fromDate",
+                  "value": "{{fromDate}}",
+                  "disabled": true,
+                  "description": "Return events at or after this timestamp"
+                },
+                {
+                  "key": "toDate",
+                  "value": "{{toDate}}",
+                  "disabled": true,
+                  "description": "Return events at or before this timestamp"
+                },
+                {
+                  "key": "page",
+                  "value": "{{page}}",
+                  "disabled": true,
+                  "description": "Page number (starts at 1)"
+                },
+                {
+                  "key": "size",
+                  "value": "{{size}}",
+                  "disabled": true,
+                  "description": "Number of items per page"
+                }
+              ]
+            }
+          },
+          "status": "500",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Record an audit event",
+      "request": {
+        "method": "POST",
+        "description": "Record an audit event\n\nResponses:\n- 201: Audit event recorded successfully\n- 400: Response\n- 500: Response",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "201 Audit event recorded successfully",
+          "originalRequest": {
+            "method": "POST",
+            "description": "Record an audit event\n\nResponses:\n- 201: Audit event recorded successfully\n- 400: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Audit event recorded successfully",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "400",
+          "originalRequest": {
+            "method": "POST",
+            "description": "Record an audit event\n\nResponses:\n- 201: Audit event recorded successfully\n- 400: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "400",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "500",
+          "originalRequest": {
+            "method": "POST",
+            "description": "Record an audit event\n\nResponses:\n- 201: Audit event recorded successfully\n- 400: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "500",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Get an audit event by ID",
+      "request": {
+        "method": "GET",
+        "description": "Get an audit event by ID\n\nResponses:\n- 200: Audit event found\n- 404: Audit event not found\n- 500: Response",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/:eventId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            ":eventId"
+          ],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "{{eventId}}",
+              "description": "Unique audit event identifier (UUID)"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Audit event found",
+          "originalRequest": {
+            "method": "GET",
+            "description": "Get an audit event by ID\n\nResponses:\n- 200: Audit event found\n- 404: Audit event not found\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "Audit event found",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "404 Audit event not found",
+          "originalRequest": {
+            "method": "GET",
+            "description": "Get an audit event by ID\n\nResponses:\n- 200: Audit event found\n- 404: Audit event not found\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "Audit event not found",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "500",
+          "originalRequest": {
+            "method": "GET",
+            "description": "Get an audit event by ID\n\nResponses:\n- 200: Audit event found\n- 404: Audit event not found\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "500",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Annotate an audit event",
+      "request": {
+        "method": "PUT",
+        "description": "Annotate an audit event\n\nResponses:\n- 200: Audit event annotated successfully\n- 400: Response\n- 404: Response\n- 500: Response",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/events/:eventId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            ":eventId"
+          ],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "{{eventId}}",
+              "description": "Unique audit event identifier (UUID)"
+            }
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "name": "200 Audit event annotated successfully",
+          "originalRequest": {
+            "method": "PUT",
+            "description": "Annotate an audit event\n\nResponses:\n- 200: Audit event annotated successfully\n- 400: Response\n- 404: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Audit event annotated successfully",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "400",
+          "originalRequest": {
+            "method": "PUT",
+            "description": "Annotate an audit event\n\nResponses:\n- 200: Audit event annotated successfully\n- 400: Response\n- 404: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "400",
+          "code": 400,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "404",
+          "originalRequest": {
+            "method": "PUT",
+            "description": "Annotate an audit event\n\nResponses:\n- 200: Audit event annotated successfully\n- 400: Response\n- 404: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "404",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "500",
+          "originalRequest": {
+            "method": "PUT",
+            "description": "Annotate an audit event\n\nResponses:\n- 200: Audit event annotated successfully\n- 400: Response\n- 404: Response\n- 500: Response",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "500",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        }
+      ]
+    },
+    {
+      "name": "Purge an audit event",
+      "request": {
+        "method": "DELETE",
+        "description": "Purge an audit event\n\nResponses:\n- 204: Audit event purged successfully (no content returned)\n- 404: Response\n- 500: Response",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/:eventId",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            ":eventId"
+          ],
+          "variable": [
+            {
+              "key": "eventId",
+              "value": "{{eventId}}",
+              "description": "Unique audit event identifier (UUID)"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "204 Audit event purged successfully (no content returned)",
+          "originalRequest": {
+            "method": "DELETE",
+            "description": "Purge an audit event\n\nResponses:\n- 204: Audit event purged successfully (no content returned)\n- 404: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "Audit event purged successfully (no content returned)",
+          "code": 204,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "404",
+          "originalRequest": {
+            "method": "DELETE",
+            "description": "Purge an audit event\n\nResponses:\n- 204: Audit event purged successfully (no content returned)\n- 404: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "404",
+          "code": 404,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        },
+        {
+          "name": "500",
+          "originalRequest": {
+            "method": "DELETE",
+            "description": "Purge an audit event\n\nResponses:\n- 204: Audit event purged successfully (no content returned)\n- 404: Response\n- 500: Response",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/events/:eventId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events",
+                ":eventId"
+              ],
+              "variable": [
+                {
+                  "key": "eventId",
+                  "value": "{{eventId}}",
+                  "description": "Unique audit event identifier (UUID)"
+                }
+              ]
+            }
+          },
+          "status": "500",
+          "code": 500,
+          "_postman_previewlanguage": "json",
+          "header": [],
+          "body": ""
+        }
+      ]
+    }
+  ]
+}
